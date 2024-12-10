@@ -1,0 +1,20 @@
+[project]
+name = "atoma_agentic_workflows"
+version = "0.1.0"
+description = "atoma-agentic-workflows using crewAI"
+authors = [{ name = "Jorge Antonio", email = "jorge@atoma.network" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0"
+]
+
+[project.scripts]
+atoma_agentic_workflows = "atoma_agentic_workflows.main:run"
+run_crew = "atoma_agentic_workflows.main:run"
+train = "atoma_agentic_workflows.main:train"
+replay = "atoma_agentic_workflows.main:replay"
+test = "atoma_agentic_workflows.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
