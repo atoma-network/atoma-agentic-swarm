@@ -1,105 +1,29 @@
-ai_research_task:
+research_task:
   description: >
     Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {year}.
+    Make sure you find any interesting and relevant information on how the topic
+    is relevant to the Atoma Network, and if it can be either used to improve the
+    technology around the Atoma Network, or if it is some technology that can be built
+    on top of the Atoma Network decentralized AI compute layer.
   expected_output: >
     A list with 10 bullet points of the most relevant information about {topic}
-  agent: ai_researcher
+  agent: researcher
 
-ai_reporting_task:
+reporting_task:
   description: >
     Review the context you got and expand each topic into a full section for a report.
     Make sure the report is detailed and contains any and all relevant information.
   expected_output: >
     A fully fledge reports with the mains topics, each with a full section of information.
     Formatted as markdown without '```'
-  agent: ai_reporting_analyst
-
-cryptography_research_task:
-  description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: cryptography_researcher
-
-cryptography_reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
-  expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: cryptography_reporting_analyst
-
-trusted_hardware_research_task:
-  description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: trusted_hardware_researcher
-
-trusted_hardware_reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
-  expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: trusted_hardware_reporting_analyst
-
-blockchain_research_task:
-  description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: blockchain_researcher
-
-blockchain_reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
-  expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: blockchain_reporting_analyst
-
-atoma_report_tweet_task:
-  description: >
-    Create a tweet about the report you created. Your tweet should emphasize
-    how it is relevant to the Atoma Network protocol.
-  expected_output: >
-    A tweet about the report you created.
-  agent: atoma_content_generation_promoter
+  agent: report_agent
 
 atoma_community_tweet_task:
   description: >
-    Create a tweet that is tailored to the Atoma community. It should be engaging,
+    Create a tweet that is tailored to the Atoma community, about {topic}. It should be engaging,
     concise and professional. The goal is to promote Atoma's technology, vision,
     and future growth. Albeit being professional, you can also be funny and creative,
     always promoting Atoma's interests in the best way possible.
   expected_output: >
     A tweet that is engaging for the Atoma community.
-  agent: atoma_content_generation_promoter
-
-atoma_research_tweet_task:
-  description: >
-    Create a tweet about the research you did. Your tweet should emphasize
-    how it is relevant to the Atoma Network protocol.
-  expected_output: >
-    A tweet about the research you did.
-  agent: atoma_content_generation_promoter
-
-atoma_announcement_tweet_task:
-  description: >
-    Create a tweet about a new announcement for the Atoma protocol. Your tweet should emphasize
-    how it is relevant to the Atoma Network protocol.
-  expected_output: >
-    A tweet about the announcement you made.
-  agent: atoma_content_generation_promoter
+  agent: content_generation_agent

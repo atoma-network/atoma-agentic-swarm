@@ -2,9 +2,8 @@
 import sys
 import warnings
 
+from crew import AtomaAgenticWorkflows
 from dotenv import load_dotenv
-
-from atoma_agentic_workflows.crew import AtomaAgenticWorkflows
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -19,9 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        "topic": "AI LLMs",
-        "year": "2024",
-        "project": "Atoma Network",
+        "topic": "Trusted Hardware and its use for truly autonomous AI agents",
     }
     AtomaAgenticWorkflows().crew().kickoff(inputs=inputs)
 
