@@ -1,7 +1,7 @@
 import os
 
-from crewai import LLM, Agent, Task
-from crewai.project import CrewBase, agent, task
+from crewai import LLM, Agent, Crew, Process, Task
+from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import ScrapeWebsiteTool
 from utils import get_github_tool, pdf_tee_paper_search_tool, pdf_whitepaper_search_tool
 
@@ -12,9 +12,8 @@ from utils import get_github_tool, pdf_tee_paper_search_tool, pdf_whitepaper_sea
 
 def get_llm() -> LLM:
     return LLM(
-        model=os.getenv("LLM_MODEL"),
-        base_url=os.getenv("LLM_BASE_URL"),
-        api_key=os.getenv("LLM_API_KEY"),
+        model="gpt-4o",
+        api_key=os.getenv("OPENAI_API_KEY"),
     )
 
 
@@ -31,8 +30,14 @@ class AtomaAgenticWorkflows:
         tasks_config (str): Path to the YAML configuration file for task definitions
     """
 
+    agents_config = "config/agents.yaml"
+    tasks_config = "config/tasks.yaml"
+
     @agent
     def researcher(self) -> Agent:
+        """
+        Create the researcher agent.
+        """
         return Agent(
             config=self.agents_config["researcher"],
             verbose=True,
@@ -47,13 +52,21 @@ class AtomaAgenticWorkflows:
 
     @task
     def research_task(self) -> Task:
+        """
+        Create the research task.
+        """
+        research_task_config = self.tasks_config["research_task"]
         return Task(
             agent=self.researcher(),
-            task=self.task_config["research_task"],
+            description=research_task_config["description"],
+            expected_output=research_task_config["expected_output"],
         )
-
+    
     @agent
     def report_agent(self) -> Agent:
+        """
+        Create the report agent.
+        """
         return Agent(
             config=self.agents_config["report_agent"],
             verbose=True,
@@ -62,23 +75,55 @@ class AtomaAgenticWorkflows:
 
     @task
     def report_task(self) -> Task:
+        """
+        Create the report task.
+        """
+        report_task_config = self.tasks_config["reporting_task"]
         return Task(
             agent=self.report_agent(),
-            task=self.task_config["report_task"],
+            description=report_task_config["description"],
+            expected_output=report_task_config["expected_output"],
         )
 
     @agent
     def content_generation_agent(self) -> Agent:
+        """
+        Create the content generation agent.
+        """
         return Agent(
             config=self.agents_config["content_generation_agent"],
             verbose=True,
             llm=get_llm(),
-            memory=False,
         )
 
     @task
     def content_generation_task(self) -> Task:
+        """
+        Create the content generation task.
+        """
+        content_generation_task_config = self.tasks_config["atoma_community_tweet_task"]
         return Task(
             agent=self.content_generation_agent(),
-            task=self.task_config["content_generation_task"],
+            description=content_generation_task_config["description"],
+            expected_output=content_generation_task_config["expected_output"],
+        )
+
+    @crew
+    def crew(self):
+        """
+        Create the crew with the agents and tasks.
+        """
+        return Crew(
+            agents=[
+                self.researcher(),
+                self.report_agent(),
+                self.content_generation_agent(),
+            ],
+            tasks=[
+                self.research_task(),
+                self.report_task(),
+                self.content_generation_task(),
+            ],
+            process=Process.sequential,
+            verbose=True,
         )

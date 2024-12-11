@@ -13,20 +13,6 @@ def get_github_tool() -> GithubSearchTool:
         github_repo=os.getenv("GITHUB_REPO"),
         gh_token=os.getenv("GITHUB_AUTH_ACCESS_TOKEN"),
         content_types=["code", "issue", "pr"],
-        config=dict(
-            llm=dict(
-                model=os.getenv("LLM_MODEL"),
-                api_base=os.getenv("LLM_BASE_URL"),
-                api_key=os.getenv("LLM_API_KEY"),
-                temperature=TEMPERATURE,
-                top_p=TOP_P,
-            ),
-            embedder=dict(
-                model=os.getenv("EMBEDDINGS_MODEL"),
-                api_base=os.getenv("EMBEDDINGS_BASE_URL"),
-                api_key=os.getenv("EMBEDDINGS_API_KEY"),
-            ),
-        ),
     )
     return tool
 
@@ -36,20 +22,6 @@ def get_github_docs_tool() -> GithubSearchTool:
         github_repo=os.getenv("GITHUB_DOCS_REPO"),
         gh_token=os.getenv("GITHUB_AUTH_ACCESS_TOKEN"),
         content_types=["code"],
-        config=dict(
-            llm=dict(
-                model=os.getenv("LLM_MODEL"),
-                api_base=os.getenv("LLM_BASE_URL"),
-                api_key=os.getenv("LLM_API_KEY"),
-                temperature=TEMPERATURE,
-                top_p=TOP_P,
-            ),
-            embedder=dict(
-                model=os.getenv("EMBEDDINGS_MODEL"),
-                api_base=os.getenv("EMBEDDINGS_BASE_URL"),
-                api_key=os.getenv("EMBEDDINGS_API_KEY"),
-            ),
-        ),
     )
     return tool
 
@@ -57,20 +29,6 @@ def get_github_docs_tool() -> GithubSearchTool:
 def pdf_whitepaper_search_tool() -> PDFSearchTool:
     tool = PDFSearchTool(
         pdf=os.getenv("WHITEPAPER_PDF_PATH"),
-        config=dict(
-            llm=dict(
-                model=os.getenv("LLM_MODEL"),
-                api_base=os.getenv("LLM_BASE_URL"),
-                api_key=os.getenv("LLM_API_KEY"),
-                temperature=TEMPERATURE,
-                top_p=TOP_P,
-            ),
-            embedder=dict(
-                model=os.getenv("EMBEDDINGS_MODEL"),
-                api_base=os.getenv("EMBEDDINGS_BASE_URL"),
-                api_key=os.getenv("EMBEDDINGS_API_KEY"),
-            ),
-        ),
     )
     return tool
 
@@ -78,19 +36,5 @@ def pdf_whitepaper_search_tool() -> PDFSearchTool:
 def pdf_tee_paper_search_tool() -> PDFSearchTool:
     tool = PDFSearchTool(
         pdf=os.getenv("TEE_PDF_PATH"),
-        config=dict(
-            llm=dict(
-                model=os.getenv("LLM_MODEL"),
-                api_base=os.getenv("LLM_BASE_URL"),
-                api_key=os.getenv("LLM_API_KEY"),
-                temperature=TEMPERATURE,
-                top_p=TOP_P,
-            ),
-            embedder=dict(
-                model=os.getenv("EMBEDDINGS_MODEL"),
-                api_base=os.getenv("EMBEDDINGS_BASE_URL"),
-                api_key=os.getenv("EMBEDDINGS_API_KEY"),
-            ),
-        ),
     )
     return tool

@@ -7,7 +7,6 @@ research_task:
     on top of the Atoma Network decentralized AI compute layer.
   expected_output: >
     A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
 
 reporting_task:
   description: >
@@ -16,7 +15,6 @@ reporting_task:
   expected_output: >
     A fully fledge reports with the mains topics, each with a full section of information.
     Formatted as markdown without '```'
-  agent: report_agent
 
 atoma_community_tweet_task:
   description: >
@@ -26,4 +24,3 @@ atoma_community_tweet_task:
     always promoting Atoma's interests in the best way possible.
   expected_output: >
     A tweet that is engaging for the Atoma community.
-  agent: content_generation_agent
