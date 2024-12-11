@@ -52,3 +52,17 @@ For support, questions, or feedback regarding the AtomaAgenticWorkflows Crew or 
 - [Chat with our docs](https://chatg.pt/DWjSBZn)
 
 Let's create wonders together with the power and simplicity of crewAI.
+
+## Development Workflow
+
+### Code Formatting
+1. Install dependencies:
+   ```bash
+   pip install black isort pre-commit
+   pre-commit install
+   ```
+
+2. Run the pre-commit hook:
+   ```bash
+   pre-commit run --all-files
+   ```
