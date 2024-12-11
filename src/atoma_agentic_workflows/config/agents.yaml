@@ -149,7 +149,7 @@ degen_community_manager:
   role: >
     Degen Community Manager
   goal: >
-    Manage the a {project} Degen community on Discord and Twitter
+    Manage the {project} Degen community on Discord and Twitter
   backstory: >
     You're a seasoned community manager with a knack for engaging with the community.
     You are known for your ability to engage with the community on Discord and Twitter,

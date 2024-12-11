@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.9.1  # Use the latest stable version
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0  # Use the latest stable version
+    hooks:
+      - id: isort

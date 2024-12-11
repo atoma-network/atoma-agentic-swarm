@@ -18,3 +18,21 @@ test = "atoma_agentic_workflows.main:test"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310']
+skip-string-normalization = false
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip = ["myenv", ".env"]
+
+[tool.flake8]
+max-line-length = 88
+exclude = [
+    ".git",
+    "__pycache__",
+    "myenv",
+]
